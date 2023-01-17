@@ -68,17 +68,29 @@ ggplot(data = plastic_waste,
 
 ### Exercise 2.2
 
-why we defined the color and fill of the curves by mapping aesthetics of the plot but we defined the alpha level as a characteristic of the plotting geom.
-Remove this text, and add your answer for Exercise 3 here.
-
 By defining the color and fill for continent through mapping the aesthetics, we can set individual colors and color fills for each continent. By defining the alpha level through the plotting gem, every continent's characteristic can be changed. Plotting Gem affects every data point while mapping aesthesics separates each category. 
 
 ### Exercise 3.1
+(OG boxplot)
 
-Remove this text, and add your answer for Exercise 4 here.
+Blox plots show us where most of the data is, as well as individual outliers that occur.
+
+```{r plastic-waste-boxplot}
+ggplot(data = plastic_waste, 
+       mapping = aes(x = continent, 
+                     y = plastic_waste_per_cap)) +
+  geom_boxplot(alpha = 0.7)
+```
+
+(Violin Plot)
+
+The violin plot show us the density and distribution of data points in waves, we can see exactly where it is most concentrated and where it is not.
 
 ```{r plastic-waste-violin}
-# insert code here
+ggplot(data = plastic_waste, 
+       mapping = aes(x = continent, 
+                     y = plastic_waste_per_cap)) +
+  geom_violin()
 ```
 
 ### Exercise 4.1
