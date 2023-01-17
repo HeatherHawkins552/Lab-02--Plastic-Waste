@@ -1,7 +1,7 @@
 Lab 02 - Plastic waste
 ================
-Insert your name here
-Insert date here
+Heather Hawkins
+01/17/23
 
 ## Load packages and data
 
@@ -10,18 +10,81 @@ library(tidyverse)
 ```
 
 ``` r
-plastic_waste <- read.csv("data/plastic-waste.csv")
+plastic_waste <- read_csv("data/plastic-waste.csv")
 ```
 
 ## Exercises
+
+``` r
+ggplot(data = plastic_waste, aes(x = plastic_waste_per_cap)) +
+  geom_histogram(binwidth = 0.2)
+```
+
+    ## Warning: Removed 51 rows containing non-finite values (`stat_bin()`).
+
+![](lab-02_files/figure-gfm/plot-plastic_waste-1.png)<!-- -->
+
+``` r
+plastic_waste %>%
+  filter(plastic_waste_per_cap > 3.5)
+```
+
+    ## # A tibble: 1 × 10
+    ##   code  entity     conti…¹  year gdp_p…² plast…³ misma…⁴ misma…⁵ coast…⁶ total…⁷
+    ##   <chr> <chr>      <chr>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>
+    ## 1 TTO   Trinidad … North …  2010  31261.     3.6    0.19   94066 1358433 1341465
+    ## # … with abbreviated variable names ¹​continent, ²​gdp_per_cap,
+    ## #   ³​plastic_waste_per_cap, ⁴​mismanaged_plastic_waste_per_cap,
+    ## #   ⁵​mismanaged_plastic_waste, ⁶​coastal_pop, ⁷​total_pop
 
 ### Exercise 1
 
 Remove this text, and add your answer for Exercise 1 here.
 
 ``` r
-# insert code here
+ggplot(data = plastic_waste,
+       aes(x = plastic_waste_per_cap)) +
+  geom_density()
 ```
+
+    ## Warning: Removed 51 rows containing non-finite values (`stat_density()`).
+
+![](lab-02_files/figure-gfm/plastic-waste-continent-1.png)<!-- -->
+
+``` r
+ggplot(data = plastic_waste, 
+       mapping = aes(x = plastic_waste_per_cap, 
+                     color = continent)) +
+  geom_density()
+```
+
+    ## Warning: Removed 51 rows containing non-finite values (`stat_density()`).
+
+![](lab-02_files/figure-gfm/plastic-waste-continent-2.png)<!-- -->
+
+``` r
+ggplot(data = plastic_waste, 
+       mapping = aes(x = plastic_waste_per_cap, 
+                     color = continent, 
+                     fill = continent)) +
+  geom_density()
+```
+
+    ## Warning: Removed 51 rows containing non-finite values (`stat_density()`).
+
+![](lab-02_files/figure-gfm/plastic-waste-continent-3.png)<!-- -->
+
+``` r
+ggplot(data = plastic_waste, 
+       mapping = aes(x = plastic_waste_per_cap, 
+                     color = continent, 
+                     fill = continent)) +
+  geom_density(alpha = 0.7)
+```
+
+    ## Warning: Removed 51 rows containing non-finite values (`stat_density()`).
+
+![](lab-02_files/figure-gfm/plastic-waste-continent-4.png)<!-- -->
 
 ### Exercise 2
 

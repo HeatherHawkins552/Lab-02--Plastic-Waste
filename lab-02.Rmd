@@ -1,8 +1,8 @@
 ---
 title: "Lab 02 - Plastic waste"
-author: "Insert your name here"
-date: "Insert date here"
-output: github_document
+author: "Heather Hawkins"
+date: "01/17/23"
+output: html_document
 ---
 
 ## Load packages and data
@@ -12,33 +12,68 @@ library(tidyverse)
 ```
 
 ```{r load-data, message=FALSE}
-plastic_waste <- read.csv("data/plastic-waste.csv")
-``
-
+plastic_waste <- read_csv("data/plastic-waste.csv")
+```
 ## Exercises
-
-ggplot(data = plastic_waste, aes(x = plastic_waste_per_cap)) +
-  geom_histogram(binwidth = 0.2)
 
 ### Exercise 1
 
 Remove this text, and add your answer for Exercise 1 here.
 
-```{r plastic-waste-continent}
-# insert code here
+```{r plot-plastic_waste, fig.height=5, fig.width=7}
+ggplot(data = plastic_waste, aes(x = plastic_waste_per_cap)) +
+  geom_histogram(binwidth = 0.2)
+``` 
+
+```{r filter-plastic_waste, fig.height=15, fig.width=15} 
+plastic_waste %>%
+  filter(plastic_waste_per_cap > 3.5)
 ```
 
-### Exercise 2
+This is not surprising since Trinidad and Tobago have a lack of waste segregation among households alongside inefficient waste management systems. 
+
+
+```{r plastic-waste-continent}
+ggplot(data = plastic_waste,
+       aes(x = plastic_waste_per_cap)) +
+  geom_density()
+
+ggplot(data = plastic_waste, 
+       mapping = aes(x = plastic_waste_per_cap, 
+                     color = continent)) +
+  geom_density()
+
+ggplot(data = plastic_waste, 
+       mapping = aes(x = plastic_waste_per_cap, 
+                     color = continent, 
+                     fill = continent)) +
+  geom_density()
+
+ggplot(data = plastic_waste, 
+       mapping = aes(x = plastic_waste_per_cap, 
+                     color = continent, 
+                     fill = continent)) +
+  geom_density(alpha = 0.7)
+```
+
+### Exercise 2.1
 
 ```{r plastic-waste-density}
-# insert code here
+ggplot(data = plastic_waste, 
+       mapping = aes(x = plastic_waste_per_cap, 
+                     color = continent, 
+                     fill = continent)) +
+  geom_density(alpha = 0.2)
 ```
 
-### Exercise 3
+### Exercise 2.2
 
+why we defined the color and fill of the curves by mapping aesthetics of the plot but we defined the alpha level as a characteristic of the plotting geom.
 Remove this text, and add your answer for Exercise 3 here.
 
-### Exercise 4
+By defining the color and fill for continent through mapping the aesthetics, we can set individual colors and color fills for each continent. By defining the alpha level through the plotting gem, every continent's characteristic can be changed. Plotting Gem affects every data point while mapping aesthesics separates each category. 
+
+### Exercise 3.1
 
 Remove this text, and add your answer for Exercise 4 here.
 
@@ -46,7 +81,7 @@ Remove this text, and add your answer for Exercise 4 here.
 # insert code here
 ```
 
-### Exercise 5
+### Exercise 4.1
 
 Remove this text, and add your answer for Exercise 5 here.
 
@@ -54,7 +89,7 @@ Remove this text, and add your answer for Exercise 5 here.
 # insert code here
 ```
 
-### Exercise 6
+### Exercise 4.2
 
 Remove this text, and add your answer for Exercise 6 here.
 
@@ -62,7 +97,7 @@ Remove this text, and add your answer for Exercise 6 here.
 # insert code here
 ```
 
-### Exercise 7
+### Exercise 4.3
 
 Remove this text, and add your answer for Exercise 7 here.
 
@@ -74,7 +109,7 @@ Remove this text, and add your answer for Exercise 7 here.
 # insert code here
 ```
 
-### Exercise 8
+### Exercise 5.1
 
 Remove this text, and add your answer for Exercise 8 here.
 
@@ -82,7 +117,6 @@ Remove this text, and add your answer for Exercise 8 here.
 # insert code here
 ```
 
-## Pro-Tips
 
 ### Excercise 3
 
@@ -95,7 +129,7 @@ ggplot(data = plastic_waste,
   geom_boxplot(width=.3, fill="green") +
   stat_summary(fun.y=median, geom="point") 
   
-### Exercise 5 
+### Exercise 5.2 
 
 Helpful reference:http://www.sthda.com/english/wiki/ggplot2-themes-and-background-colors-the-3-elements
 
