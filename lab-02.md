@@ -167,18 +167,56 @@ ggplot(data = plastic_waste,
 
 ![](lab-02_files/figure-html/plastic-waste-violin-1.png)<!-- -->
 
+
+```r
+ggplot(data = plastic_waste, 
+       mapping = aes(x = continent, 
+                     y = plastic_waste_per_cap)) +
+  geom_violin()+
+  geom_boxplot(width=.3, fill="green") +
+  stat_summary(fun.y=median, geom="point") 
+```
+
+```
+## Warning: The `fun.y` argument of `stat_summary()` is deprecated as of ggplot2 3.3.0.
+## ℹ Please use the `fun` argument instead.
+```
+
+```
+## Warning: Removed 51 rows containing non-finite values (`stat_ydensity()`).
+```
+
+```
+## Warning: Removed 51 rows containing non-finite values (`stat_boxplot()`).
+```
+
+```
+## Warning: Removed 51 rows containing non-finite values (`stat_summary()`).
+```
+
+![](lab-02_files/figure-html/plastic-waste-violin-and-boxplot-1.png)<!-- -->
+
 ### Exercise 4.1
 
-Remove this text, and add your answer for Exercise 5 here.
+Scatterplot for the relationship of plastic waste per capita and mismanaged plastic waste per capita. 
 
 
 ```r
-# insert code here
+ggplot(data = plastic_waste, 
+       mapping = aes(x = mismanaged_plastic_waste_per_cap, 
+                     y = plastic_waste_per_cap)) +
+  geom_point()
 ```
+
+```
+## Warning: Removed 51 rows containing missing values (`geom_point()`).
+```
+
+![](lab-02_files/figure-html/plastic-waste-mismanaged-1.png)<!-- -->
 
 ### Exercise 4.2
 
-Remove this text, and add your answer for Exercise 6 here.
+Color the points in the scatterplot by continent. Does there seem to be any clear distinctions between continents with respect to how plastic waste per capita and mismanaged plastic waste per capita are associated?
 
 
 ```r
@@ -187,7 +225,7 @@ Remove this text, and add your answer for Exercise 6 here.
 
 ### Exercise 4.3
 
-Remove this text, and add your answer for Exercise 7 here.
+Visualize the relationship between plastic waste per capita and total population as well as plastic waste per capita and coastal population. You will need to make two separate plots. Do either of these pairs of variables appear to be more strongly linearly associated?
 
 
 ```r
@@ -201,7 +239,7 @@ Remove this text, and add your answer for Exercise 7 here.
 
 ### Exercise 5.1
 
-Remove this text, and add your answer for Exercise 8 here.
+Recreate the following plot, and interpret what you see in context of the data.
 
 
 ```r
