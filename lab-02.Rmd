@@ -13,9 +13,12 @@ library(tidyverse)
 
 ```{r load-data, message=FALSE}
 plastic_waste <- read.csv("data/plastic-waste.csv")
-```
+``
 
 ## Exercises
+
+ggplot(data = plastic_waste, aes(x = plastic_waste_per_cap)) +
+  geom_histogram(binwidth = 0.2)
 
 ### Exercise 1
 
