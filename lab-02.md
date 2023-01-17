@@ -220,8 +220,17 @@ Color the points in the scatterplot by continent. Does there seem to be any clea
 
 
 ```r
-# insert code here
+ggplot(data = plastic_waste, 
+       mapping = aes(x = mismanaged_plastic_waste_per_cap, 
+                     y = plastic_waste_per_cap, color = continent)) +
+  geom_point()
 ```
+
+```
+## Warning: Removed 51 rows containing missing values (`geom_point()`).
+```
+
+![](lab-02_files/figure-html/plastic-waste-mismanaged-continent-1.png)<!-- -->
 
 ### Exercise 4.3
 
@@ -229,13 +238,31 @@ Visualize the relationship between plastic waste per capita and total population
 
 
 ```r
-# insert code here
+ggplot(data = plastic_waste, 
+       mapping = aes(x = total_pop,
+                     y = plastic_waste_per_cap))+
+  geom_point()
 ```
+
+```
+## Warning: Removed 61 rows containing missing values (`geom_point()`).
+```
+
+![](lab-02_files/figure-html/plastic-waste by total pop-1.png)<!-- -->
 
 
 ```r
-# insert code here
+ggplot(data = plastic_waste, 
+       mapping = aes(x = coastal_pop,
+                     y = plastic_waste_per_cap))+
+  geom_point()
 ```
+
+```
+## Warning: Removed 51 rows containing missing values (`geom_point()`).
+```
+
+![](lab-02_files/figure-html/plastic-waste by coastalpop-1.png)<!-- -->
 
 ### Exercise 5.1
 
