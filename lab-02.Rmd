@@ -165,7 +165,8 @@ Looking at the actual r numbers, they are only slightly different.
 
 ### Exercise 5.1
 
-Recreate the following plot, and interpret what you see in context of the data.
+Recreating plot
+
 
 ```{r recreate-viz}
 df <- plastic_waste

@@ -1,9 +1,10 @@
 ---
-Lab 02
-================
-Heather Hawkins
-01/17/2023
-
+title: "Lab 02 - Plastic waste"
+author: "Heather Hawkins"
+date: "01/17/23"
+output:
+ html_document:
+    keep_md: yes
 ---
 
 ## Load packages and data
@@ -301,7 +302,8 @@ Looking at the actual r numbers, they are only slightly different.
 
 ### Exercise 5.1
 
-Recreate the following plot, and interpret what you see in context of the data.
+Recreating plot
+
 
 
 ```r
