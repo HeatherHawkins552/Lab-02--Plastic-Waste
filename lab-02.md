@@ -22,7 +22,6 @@ plastic_waste <- read_csv("data/plastic-waste.csv")
 
 ### Exercise 1
 
-Remove this text, and add your answer for Exercise 1 here.
 
 
 ```r
@@ -35,6 +34,7 @@ ggplot(data = plastic_waste, aes(x = plastic_waste_per_cap)) +
 ```
 
 ![](lab-02_files/figure-html/plot-plastic_waste-1.png)<!-- -->
+
 
 
 ```r
@@ -52,7 +52,22 @@ plastic_waste %>%
 ## #   ⁵​mismanaged_plastic_waste, ⁶​coastal_pop, ⁷​total_pop
 ```
 
-This is not surprising since Trinidad and Tobago have a lack of waste segregation among households alongside inefficient waste management systems. 
+This is not surprising since Trinidad and Tobago have a lack of waste segregation among households alongside inefficient waste management systems.
+
+
+```r
+ggplot(data = plastic_waste, aes(x = plastic_waste_per_cap)) +
+  geom_histogram(binwidth = 0.2)+
+         facet_wrap(~continent) 
+```
+
+```
+## Warning: Removed 51 rows containing non-finite values (`stat_bin()`).
+```
+
+![](lab-02_files/figure-html/plot-plastic_waste_2-1.png)<!-- -->
+
+Asia, Europe, and North America seem to have the most waste per capita. The Oceania and South America seem to have the least. 
 
 
 
@@ -264,27 +279,60 @@ ggplot(data = plastic_waste,
 
 ![](lab-02_files/figure-html/plastic-waste by coastalpop-1.png)<!-- -->
 
+Visually, The relationship between plastic waste per capita and total population seems similar to the relationship plastic waste per capita and coastal population. 
+
+
+```r
+  cor(plastic_waste$plastic_waste_per_cap, plastic_waste$total_pop, use = "pairwise.complete.obs")
+```
+
+```
+## [1] -0.07318113
+```
+
+
+```r
+  cor(plastic_waste$plastic_waste_per_cap, plastic_waste$coastal_pop, use = "pairwise.complete.obs")
+```
+
+```
+## [1] -0.07699641
+```
+Looking at the actual r numbers, they are only slightly different.
+
 ### Exercise 5.1
 
 Recreate the following plot, and interpret what you see in context of the data.
 
 
 ```r
-# insert code here
+df <- plastic_waste
+df<- df %>% filter(plastic_waste_per_cap < 3) 
+ggplot(df, plastic_waste, 
+       mapping = aes(x = coastal_pop/total_pop, 
+                     y = plastic_waste_per_cap))+
+  geom_point(mapping= aes(color= continent), size=0.8)+ scale_color_manual(values = c("Africa" = "black", "Asia"="darkblue", "Europe" = "blue", "North America"="green", "Oceania"="lightgreen", "South America"="yellow"))+
+  geom_smooth(linewidth=0.5, alpha= 0.4, color="black")+
+labs(title = "Plastic waste vs. coastal population proportion", size=4,subtitle = "by continent")+
+  theme_bw()+
+  labs(x = "Coastal/Total Population Proportion", y = "Plastic Waste per Capita")
 ```
 
+```
+## `geom_smooth()` using method = 'loess' and formula = 'y ~ x'
+```
 
-### Excercise 3
+```
+## Warning: Removed 10 rows containing non-finite values (`stat_smooth()`).
+```
 
-Try this :D
+```
+## Warning: Removed 10 rows containing missing values (`geom_point()`).
+```
 
-ggplot(data = plastic_waste, 
-       mapping = aes(x = continent, 
-                     y = plastic_waste_per_cap)) +
-  geom_violin()+
-  geom_boxplot(width=.3, fill="green") +
-  stat_summary(fun.y=median, geom="point") 
-  
+![](lab-02_files/figure-html/recreate-viz-1.png)<!-- -->
+
+
 ### Exercise 5.2 
 
 Helpful reference:http://www.sthda.com/english/wiki/ggplot2-themes-and-background-colors-the-3-elements
