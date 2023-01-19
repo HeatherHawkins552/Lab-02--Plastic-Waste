@@ -4,7 +4,6 @@ author: "Heather Hawkins"
 date: "01/17/23"
 output:
   html_document:
-    keep_md: yes
 ---
 
 ## Load packages and data

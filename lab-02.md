@@ -313,7 +313,7 @@ ggplot(df, plastic_waste,
                      y = plastic_waste_per_cap))+
   geom_point(mapping= aes(color= continent), size=0.8)+ scale_color_manual(values = c("Africa" = "black", "Asia"="darkblue", "Europe" = "blue", "North America"="green", "Oceania"="lightgreen", "South America"="yellow"))+
   geom_smooth(linewidth=0.5, alpha= 0.4, color="black")+
-labs(title = "Plastic waste vs. coastal population proportion", size=4,subtitle = "by continent")+
+labs(title = "Plastic Waste vs. Coastal Population proportion", size=4,subtitle = "by continent")+
   theme_bw()+
   labs(x = "Coastal/Total Population Proportion", y = "Plastic Waste per Capita")
 ```
@@ -332,10 +332,6 @@ labs(title = "Plastic waste vs. coastal population proportion", size=4,subtitle 
 
 ![](lab-02_files/figure-html/recreate-viz-1.png)<!-- -->
 
-
-### Exercise 5.2 
-
-Helpful reference:http://www.sthda.com/english/wiki/ggplot2-themes-and-background-colors-the-3-elements
 
 
 
