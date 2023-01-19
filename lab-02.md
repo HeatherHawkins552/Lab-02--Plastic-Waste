@@ -1,10 +1,8 @@
 ---
-title: "Lab 02 - Plastic waste"
-author: "Heather Hawkins"
-date: "01/17/23"
-output:
- html_document:
-    keep_md: yes
+Lab 02 - Plastic waste
+Heather Hawkins
+01/17/23
+
 ---
 
 ## Load packages and data
