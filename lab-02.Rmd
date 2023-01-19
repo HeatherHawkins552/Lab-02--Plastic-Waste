@@ -3,7 +3,8 @@ title: "Lab 02 - Plastic waste"
 author: "Heather Hawkins"
 date: "01/17/23"
 output:
-  html_document:
+ html_document:
+    keep_md: yes
 ---
 
 ## Load packages and data
